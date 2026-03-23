@@ -1,15 +1,186 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAMO Game</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legal — MAMOGames</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0c0e14;
+      --surface: #13161f;
+      --border: #1e2231;
+      --accent: #e8ff47;
+      --accent2: #47c8ff;
+      --text: #e4e6f0;
+      --muted: #6b7194;
+      --heading: #ffffff;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 48px 24px;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+    .logo span { color: var(--accent); }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(40px, 8vw, 72px);
+      color: var(--heading);
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 56px;
+      line-height: 1.6;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 480px) {
+      .cards { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 28px 24px;
+      text-decoration: none;
+      text-align: left;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--card-accent, var(--accent));
+      transform: scaleX(0);
+      transition: transform 0.25s;
+    }
+    .card:hover { border-color: var(--card-accent, var(--accent)); transform: translateY(-2px); }
+    .card:hover::after { transform: scaleX(1); }
+
+    .card-tos { --card-accent: var(--accent); }
+    .card-privacy { --card-accent: var(--accent2); }
+
+    .card-icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--heading);
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .card-arrow {
+      position: absolute;
+      top: 24px; right: 24px;
+      font-size: 18px;
+      color: var(--muted);
+      transition: color 0.2s, transform 0.2s;
+    }
+    .card:hover .card-arrow {
+      color: var(--card-accent, var(--accent));
+      transform: translate(2px, -2px);
+    }
+
+    .footer-note {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+  </style>
 </head>
 <body>
-    <h1>MAMO Game</h1>
-    <ul>
-        <li><a href="privacy.html">Privacy Policy</a></li>
-        <li><a href="tos.html">Terms of Service</a></li>
-    </ul>
+  <div class="hero">
+    <div class="logo">MAMO<span>Games</span> · Legal</div>
+
+    <h1>Legal<br>Documents</h1>
+    <p class="subtitle">All legal documents for MAMOGames mobile titles,<br>developed by Yannick Triqueneaux.</p>
+
+    <div class="cards">
+      <a href="tos.html" class="card card-tos">
+        <span class="card-icon">📋</span>
+        <span class="card-arrow">↗</span>
+        <div class="card-title">Terms of Service</div>
+        <div class="card-desc">Rules of use, in-app purchases, player conduct, and intellectual property.</div>
+      </a>
+      <a href="privacy.html" class="card card-privacy">
+        <span class="card-icon">🔒</span>
+        <span class="card-arrow">↗</span>
+        <div class="card-title">Privacy Policy</div>
+        <div class="card-desc">Data collection, third-party services, your rights, and how to delete your data.</div>
+      </a>
+    </div>
+
+    <p class="footer-note">© 2025 MAMOGames / Yannick Triqueneaux · Effective June 1, 2025</p>
+  </div>
 </body>
 </html>
