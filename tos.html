@@ -1,12 +1,335 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - MAMO Game</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — MAMOGames</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0c0e14;
+      --surface: #13161f;
+      --border: #1e2231;
+      --accent: #e8ff47;
+      --accent2: #47c8ff;
+      --text: #e4e6f0;
+      --muted: #6b7194;
+      --heading: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* Background grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* Header */
+    header {
+      padding: 48px 0 56px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 56px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--accent); }
+    .back-link::before { content: '←'; font-size: 16px; }
+
+    .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #0c0e14;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(32px, 5vw, 52px);
+      color: var(--heading);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .meta {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .meta strong { color: var(--accent2); font-weight: 500; }
+
+    /* TOC */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      padding: 24px 28px;
+      margin-bottom: 52px;
+    }
+    .toc-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .toc ol { padding-left: 18px; }
+    .toc li { margin-bottom: 6px; }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: var(--accent); }
+
+    /* Sections */
+    section {
+      margin-bottom: 52px;
+      padding-bottom: 52px;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-of-type { border-bottom: none; }
+
+    .section-number {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--heading);
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    p { margin-bottom: 16px; font-size: 15px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol {
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+    li { margin-bottom: 8px; font-size: 15px; }
+
+    .highlight-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent2);
+      border-radius: 4px;
+      padding: 18px 22px;
+      margin: 20px 0;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    footer strong { color: var(--text); }
+
+    @media (max-width: 600px) {
+      header { padding: 32px 0 40px; }
+    }
+  </style>
 </head>
 <body>
+
+<div class="container">
+  <header>
+    <a href="index.html" class="back-link">Legal Hub</a>
+    <div class="badge">Legal</div>
     <h1>Terms of Service</h1>
-    <!-- TODO: Add terms of service content -->
+    <p class="meta">Effective date: <strong>June 1, 2025</strong> &nbsp;·&nbsp; MAMOGames / Yannick Triqueneaux</p>
+  </header>
+
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#acceptance">Acceptance of Terms</a></li>
+      <li><a href="#eligibility">Eligibility</a></li>
+      <li><a href="#account">Account & Player Identity</a></li>
+      <li><a href="#purchases">In-App Purchases</a></li>
+      <li><a href="#gameplay">Gameplay & User Conduct</a></li>
+      <li><a href="#ip">Intellectual Property</a></li>
+      <li><a href="#disclaimers">Disclaimers & Limitation of Liability</a></li>
+      <li><a href="#termination">Termination</a></li>
+      <li><a href="#changes">Changes to These Terms</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </nav>
+
+  <section id="acceptance">
+    <div class="section-number">01</div>
+    <h2>Acceptance of Terms</h2>
+    <p>By downloading, installing, or playing any game developed by <strong>MAMOGames / Yannick Triqueneaux</strong> ("we," "us," or "our"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use our games or services.</p>
+    <p>These Terms apply to all users of our mobile games, including any content, features, and services offered through our games.</p>
+  </section>
+
+  <section id="eligibility">
+    <div class="section-number">02</div>
+    <h2>Eligibility</h2>
+    <p>Our games are intended for users who are at least 13 years of age. If you are under 13, you may not use our services. If you are between 13 and 18, you represent that your parent or legal guardian has reviewed and agreed to these Terms on your behalf.</p>
+    <p>By using our games, you represent and warrant that you meet these eligibility requirements.</p>
+  </section>
+
+  <section id="account">
+    <div class="section-number">03</div>
+    <h2>Account & Player Identity</h2>
+    <p>Our games use <strong>Unity Gaming Services (UGS) Authentication</strong> to create and manage player identities. When you first launch our game, an anonymous player account is automatically created for you. This account:</p>
+    <ul>
+      <li>Is tied to your device and stores your game progress, achievements, and purchases.</li>
+      <li>Can be upgraded and linked to a Unity Player Account, Google Play account, or Apple ID to enable cross-device access.</li>
+      <li>May be lost if you uninstall the app and have not linked it to an external identity provider.</li>
+    </ul>
+    <div class="highlight-box">
+      ⚠️ We strongly recommend linking your player account to a Unity Player Account or platform identity before making any in-app purchases, to ensure your progress and items are recoverable.
+    </div>
+    <p>You are responsible for maintaining the security of your linked account credentials. We are not responsible for any loss resulting from unauthorized access to your account.</p>
+  </section>
+
+  <section id="purchases">
+    <div class="section-number">04</div>
+    <h2>In-App Purchases</h2>
+    <p>Our games may offer virtual items, currency, or other content for purchase ("In-App Purchases"). All In-App Purchases are processed through the applicable platform store (Google Play Store or Apple App Store) and are subject to their respective terms and conditions.</p>
+    <ul>
+      <li>All purchases are final and non-refundable, except as required by applicable law or as permitted by the platform store's refund policy.</li>
+      <li>Virtual items and currency have no real-world monetary value and cannot be exchanged for cash.</li>
+      <li>We reserve the right to modify, discontinue, or adjust the pricing of virtual items at any time.</li>
+      <li>In the event of a game shutdown, no refunds will be issued for unused virtual items unless required by law.</li>
+    </ul>
+    <p>For refund requests, please contact the Google Play Store or Apple App Store directly, as applicable.</p>
+  </section>
+
+  <section id="gameplay">
+    <div class="section-number">05</div>
+    <h2>Gameplay & User Conduct</h2>
+    <p>You agree not to engage in any of the following when using our games:</p>
+    <ul>
+      <li>Cheating, hacking, or using unauthorized third-party software to gain an unfair advantage.</li>
+      <li>Exploiting bugs or glitches in a way that disrupts the experience for other players.</li>
+      <li>Attempting to reverse-engineer, decompile, or modify any part of our games.</li>
+      <li>Using automated scripts, bots, or macros to interact with our services.</li>
+      <li>Engaging in any activity that violates applicable laws or regulations.</li>
+    </ul>
+    <p>We reserve the right to suspend or permanently ban any player account that violates these conduct rules, at our sole discretion, without prior notice or refund.</p>
+  </section>
+
+  <section id="ip">
+    <div class="section-number">06</div>
+    <h2>Intellectual Property</h2>
+    <p>All content within our games — including but not limited to graphics, audio, game mechanics, code, characters, story, and branding — is the exclusive property of MAMOGames / Yannick Triqueneaux and is protected by applicable copyright, trademark, and intellectual property laws.</p>
+    <p>You are granted a limited, non-exclusive, non-transferable, revocable license to use our games for personal, non-commercial entertainment purposes only. This license does not grant you any right to reproduce, distribute, modify, create derivative works from, or exploit any part of our games.</p>
+  </section>
+
+  <section id="disclaimers">
+    <div class="section-number">07</div>
+    <h2>Disclaimers & Limitation of Liability</h2>
+    <p>Our games are provided "as is" and "as available" without warranties of any kind, either express or implied. We do not warrant that our games will be uninterrupted, error-free, or free of viruses or other harmful components.</p>
+    <p>To the maximum extent permitted by applicable law, MAMOGames / Yannick Triqueneaux shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of data, loss of virtual items, or loss of gameplay progress.</p>
+    <p>Our total liability to you for any claims arising from these Terms or your use of our games shall not exceed the amount you paid us in the twelve (12) months preceding the claim.</p>
+  </section>
+
+  <section id="termination">
+    <div class="section-number">08</div>
+    <h2>Termination</h2>
+    <p>We may suspend or terminate your access to our games at any time, for any reason, including violation of these Terms. Upon termination, your license to use the game is revoked and you must cease all use of the game.</p>
+    <p>You may stop using our games at any time by uninstalling them from your device. Uninstalling the game does not delete your player data held by Unity Gaming Services — see our <a href="privacy.html">Privacy Policy</a> for data deletion requests.</p>
+  </section>
+
+  <section id="changes">
+    <div class="section-number">09</div>
+    <h2>Changes to These Terms</h2>
+    <p>We reserve the right to update or modify these Terms at any time. We will notify users of significant changes by updating the "Effective date" at the top of this page. Your continued use of our games after any such changes constitutes your acceptance of the new Terms.</p>
+    <p>We encourage you to review these Terms periodically.</p>
+  </section>
+
+  <section id="contact">
+    <div class="section-number">10</div>
+    <h2>Contact</h2>
+    <p>If you have any questions about these Terms of Service, please contact us:</p>
+    <div class="highlight-box">
+      <strong>MAMOGames / Yannick Triqueneaux</strong><br>
+      Email: <a href="mailto:mmotoobusy@gmail.com">legal@mamogames.com</a><br>
+      GitHub: <a href="https://github.com/YannickTriqueneaux" target="_blank">github.com/YannickTriqueneaux</a>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <strong>MAMOGames</strong> · © 2025 Yannick Triqueneaux · All rights reserved<br>
+  <a href="tos.html">Terms of Service</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a>
+</footer>
+
 </body>
 </html>
