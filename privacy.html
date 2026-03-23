@@ -1,12 +1,398 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - MAMO Game</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — MAMOGames</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0c0e14;
+      --surface: #13161f;
+      --border: #1e2231;
+      --accent: #47c8ff;
+      --accent2: #e8ff47;
+      --text: #e4e6f0;
+      --muted: #6b7194;
+      --heading: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    header {
+      padding: 48px 0 56px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 56px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--accent); }
+    .back-link::before { content: '←'; font-size: 16px; }
+
+    .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #0c0e14;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(32px, 5vw, 52px);
+      color: var(--heading);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .meta {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .meta strong { color: var(--accent); font-weight: 500; }
+
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      padding: 24px 28px;
+      margin-bottom: 52px;
+    }
+    .toc-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .toc ol { padding-left: 18px; }
+    .toc li { margin-bottom: 6px; }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: var(--accent); }
+
+    section {
+      margin-bottom: 52px;
+      padding-bottom: 52px;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-of-type { border-bottom: none; }
+
+    .section-number {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--heading);
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    p { margin-bottom: 16px; font-size: 15px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol { padding-left: 20px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; font-size: 15px; }
+
+    .highlight-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent2);
+      border-radius: 4px;
+      padding: 18px 22px;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    .data-table th {
+      background: var(--surface);
+      color: var(--heading);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 2px solid var(--accent);
+    }
+    .data-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    footer strong { color: var(--text); }
+  </style>
 </head>
 <body>
+
+<div class="container">
+  <header>
+    <a href="index.html" class="back-link">Legal Hub</a>
+    <div class="badge">Legal</div>
     <h1>Privacy Policy</h1>
-    <!-- TODO: Add privacy policy content -->
+    <p class="meta">Effective date: <strong>June 1, 2025</strong> &nbsp;·&nbsp; MAMOGames / Yannick Triqueneaux</p>
+  </header>
+
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#data-collected">Data We Collect</a></li>
+      <li><a href="#third-parties">Third-Party Services</a></li>
+      <li><a href="#how-we-use">How We Use Your Data</a></li>
+      <li><a href="#data-retention">Data Retention</a></li>
+      <li><a href="#your-rights">Your Rights</a></li>
+      <li><a href="#children">Children's Privacy</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#changes">Changes to This Policy</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </nav>
+
+  <section id="overview">
+    <div class="section-number">01</div>
+    <h2>Overview</h2>
+    <p>MAMOGames / Yannick Triqueneaux ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard information when you play our mobile games.</p>
+    <p>We do not collect any personally identifiable information (PII) such as your name, email address, or phone number directly through our games. Your experience is tied to an anonymous player identity managed through Unity Gaming Services.</p>
+    <div class="highlight-box">
+      <strong>Short version:</strong> We collect gameplay data, anonymous player IDs, and purchase records to run our game. We do not sell your data. We do not collect your name or email directly.
+    </div>
+  </section>
+
+  <section id="data-collected">
+    <div class="section-number">02</div>
+    <h2>Data We Collect</h2>
+    <p>The following categories of data are collected when you use our games:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Data Type</th>
+          <th>Description</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Anonymous Player ID</strong></td>
+          <td>A randomly generated unique identifier assigned by Unity Authentication upon first launch.</td>
+          <td>Core game functionality, saving progress</td>
+        </tr>
+        <tr>
+          <td><strong>Game Progression</strong></td>
+          <td>Level data, achievements, inventory, and game state stored via Unity Cloud Save.</td>
+          <td>Saving and restoring your game progress</td>
+        </tr>
+        <tr>
+          <td><strong>In-App Purchase Records</strong></td>
+          <td>Purchase receipts and virtual item ownership, processed via Unity Economy and the platform store.</td>
+          <td>Fulfilling and verifying purchases</td>
+        </tr>
+        <tr>
+          <td><strong>Analytics & Telemetry</strong></td>
+          <td>Gameplay events, session duration, feature usage, and crash reports via Unity Analytics.</td>
+          <td>Improving game balance and performance</td>
+        </tr>
+        <tr>
+          <td><strong>Device Information</strong></td>
+          <td>Device model, OS version, and language settings (collected automatically by Unity SDK).</td>
+          <td>Compatibility and debugging</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>We do <strong>not</strong> collect your real name, email address, phone number, or location data directly through our games.</p>
+  </section>
+
+  <section id="third-parties">
+    <div class="section-number">03</div>
+    <h2>Third-Party Services</h2>
+    <p>Our games rely on the following third-party services, each governed by their own privacy policies:</p>
+
+    <ul>
+      <li>
+        <strong>Unity Gaming Services (UGS)</strong> — Authentication, Cloud Save, Economy, Analytics, and Push Notifications.<br>
+        <a href="https://unity.com/legal/privacy-policy" target="_blank">unity.com/legal/privacy-policy</a>
+      </li>
+      <li>
+        <strong>Google Play Services</strong> (Android) — Platform-level identity, billing, and crash reporting.<br>
+        <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a>
+      </li>
+      <li>
+        <strong>Google Play Billing</strong> — Processing in-app purchases on Android devices.<br>
+        <a href="https://play.google.com/about/play-terms/" target="_blank">play.google.com/about/play-terms</a>
+      </li>
+    </ul>
+
+    <p>We do not sell, trade, or rent your data to any third parties beyond what is necessary to operate the services listed above.</p>
+  </section>
+
+  <section id="how-we-use">
+    <div class="section-number">04</div>
+    <h2>How We Use Your Data</h2>
+    <p>We use the collected data solely for the following purposes:</p>
+    <ul>
+      <li>Providing and maintaining core game functionality (saving progress, restoring accounts).</li>
+      <li>Processing and verifying in-app purchases and delivering virtual items.</li>
+      <li>Sending push notifications about game events (only if you have granted notification permission).</li>
+      <li>Analyzing aggregated, anonymous gameplay telemetry to improve game balance, detect bugs, and optimize performance.</li>
+      <li>Ensuring fair play and enforcing our Terms of Service (e.g., detecting cheating or abuse).</li>
+    </ul>
+    <p>We do not use your data for advertising profiling or sell it to advertising networks.</p>
+  </section>
+
+  <section id="data-retention">
+    <div class="section-number">05</div>
+    <h2>Data Retention</h2>
+    <p>Your player data (progression, purchases, player ID) is retained for as long as your account is active or as necessary to provide our services. Analytics data is retained in aggregated form for up to 24 months.</p>
+    <p>If you request deletion of your account data, we will process your request within 30 days. Note that purchase transaction records may be retained longer as required by applicable law.</p>
+  </section>
+
+  <section id="your-rights">
+    <div class="section-number">06</div>
+    <h2>Your Rights</h2>
+    <p>Depending on your jurisdiction, you may have the following rights regarding your personal data:</p>
+    <ul>
+      <li><strong>Right to Access:</strong> Request a copy of the data we hold about your player account.</li>
+      <li><strong>Right to Deletion:</strong> Request that we delete your player account and associated data.</li>
+      <li><strong>Right to Portability:</strong> Request your data in a portable format.</li>
+      <li><strong>Right to Opt-Out:</strong> Opt out of analytics telemetry collection (available in game settings where applicable).</li>
+    </ul>
+    <div class="highlight-box">
+      To exercise any of these rights, contact us at <a href="mailto:mmotoobusy@gmail.com">legal@mamogames.com</a> with your Player ID (found in the game's settings or profile screen).
+    </div>
+    <p>If you are a resident of the European Economic Area (EEA) or Quebec (Canada), you may have additional rights under GDPR or Quebec Law 25 respectively. We will respond to all requests within 30 days.</p>
+  </section>
+
+  <section id="children">
+    <div class="section-number">07</div>
+    <h2>Children's Privacy</h2>
+    <p>Our games are not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided us with data, please contact us immediately at <a href="mailto:mmotoobusy@gmail.com">legal@mamogames.com</a> and we will take steps to delete such information.</p>
+  </section>
+
+  <section id="security">
+    <div class="section-number">08</div>
+    <h2>Security</h2>
+    <p>We take reasonable technical and organizational measures to protect your data against unauthorized access, alteration, disclosure, or destruction. Player data is stored on Unity's infrastructure, which employs industry-standard security practices.</p>
+    <p>However, no method of transmission or storage is 100% secure. We cannot guarantee absolute security of your data.</p>
+  </section>
+
+  <section id="changes">
+    <div class="section-number">09</div>
+    <h2>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. We will notify users of material changes by updating the "Effective date" at the top of this page. We encourage you to review this policy periodically.</p>
+    <p>Your continued use of our games after any changes to this policy constitutes your acceptance of the updated policy.</p>
+  </section>
+
+  <section id="contact">
+    <div class="section-number">10</div>
+    <h2>Contact</h2>
+    <p>If you have any questions, concerns, or data requests related to this Privacy Policy, please reach out:</p>
+    <div class="highlight-box">
+      <strong>MAMOGames / Yannick Triqueneaux</strong><br>
+      Email: <a href="mailto:mmotoobusy@gmail.com">legal@mamogames.com</a><br>
+      GitHub: <a href="https://github.com/YannickTriqueneaux" target="_blank">github.com/YannickTriqueneaux</a>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <strong>MAMOGames</strong> · © 2025 Yannick Triqueneaux · All rights reserved<br>
+  <a href="tos.html">Terms of Service</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a>
+</footer>
+
 </body>
 </html>
